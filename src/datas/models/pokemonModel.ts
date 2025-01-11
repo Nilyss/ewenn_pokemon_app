@@ -7,5 +7,10 @@ export const pokemonModel = (pokemon: IPokemon) =>{
         description: pokemon.description,
         image: pokemon.image,
         artwork: pokemon.artwork,
+        types: pokemon.types,
+        stats: pokemon.stats,
+        abilities: pokemon.abilities,
+        moves: pokemon.moves,
+        evolutions: pokemon.evolutions
     }
 }

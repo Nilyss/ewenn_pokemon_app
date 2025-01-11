@@ -1,0 +1,36 @@
+#pokemonDetails {
+  background: #f2f2f2;
+  min-height: 90dvh;
+  padding: 2em;
+  display: flex;
+  flex-flow: column;
+  position: relative;
+}
+
+#pokemonDetails .goBackIcn {
+  font-size: 2em;
+  cursor: pointer;
+}
+
+#pokemonDetails .detailsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  h2 {
+    font-size: 1.8em;
+  }
+}
+
+#pokemonDetails .detailsBody {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#pokemonDetails .buttonContainer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}

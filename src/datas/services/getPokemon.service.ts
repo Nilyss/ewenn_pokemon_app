@@ -17,7 +17,7 @@ export class PokemonService {
       const frenchFlavorText =
         speciesRes.data.flavor_text_entries.find(
           (entry): boolean => entry.language.name === "fr",
-        )?.flavor_text || "Description non trouvé";
+        )?.flavor_text || "Description non trouvée";
 
       const spriteUrl =
         pokemonRes.data.sprites.front_default || "Image non trouvée";
@@ -26,12 +26,41 @@ export class PokemonService {
         pokemonRes.data.sprites.other["official-artwork"].front_default ||
         "Artwork non trouvé";
 
+      const types = pokemonRes.data.types.map((type) => type.type.name) || [];
+
+      const stats = pokemonRes.data.stats.reduce((acc, stat) => {
+        acc[stat.stat.name] = stat.base_stat;
+        return acc;
+      }, {});
+
+      const abilities =
+        pokemonRes.data.abilities.map((ability) => ability.ability.name) || [];
+
+      const moves = pokemonRes.data.moves.map((move) => move.move.name) || [];
+
+      const evolutionsRes = await getRequest(
+        speciesRes.data.evolution_chain.url,
+      );
+      const evolutionChain: string[] = [];
+
+      const parseEvolutions = (chain) => {
+        if (!chain) return;
+        evolutionChain.push(chain.species.name);
+        chain.evolves_to.forEach(parseEvolutions);
+      };
+      parseEvolutions(evolutionsRes.data.chain);
+
       return {
         id: parseInt(pokemonId),
         name: frenchName,
         description: frenchFlavorText,
         image: spriteUrl,
         artwork: artworkUrl,
+        types: types,
+        stats: stats,
+        abilities: abilities,
+        moves: moves,
+        evolutions: evolutionChain,
       };
     } catch (error) {
       console.error("Erreur lors de la récupération des données :", error);

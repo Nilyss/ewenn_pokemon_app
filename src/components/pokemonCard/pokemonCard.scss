@@ -1,18 +1,108 @@
 #pokemonCard {
   position: relative;
-  width: 200px;
-  height: 250px;
+  width: 205px;
+  height: 310px;
+  box-shadow:
+    rgba(60, 64, 67, 0.3) 0 1px 2px 0,
+    rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
+  border-radius: 4px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  padding: 1em;
+  transition: all 50ms ease-out;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.11);
+    transition: all 150ms ease-in;
+  }
+}
+
+.typeBckgnd {
+  width: 205px;
+  height: 310px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.normalBkgnd {
+}
+
+.fightingBkgnd {
+}
+
+.flyingBkgnd {
+}
+
+.poisonBkgnd {
+}
+.groundBkgnd {
+}
+
+.rockBkgnd {
+}
+
+.bugBkgnd {
+}
+
+.ghostBkgnd {
+}
+
+.steelBkgnd {
+}
+
+.fireBkgnd {
+}
+
+.waterBkgnd {
+}
+
+.grassBkgnd {
+  background: linear-gradient(135deg, #4caf50, #81c784, #a5d6a7);
+}
+
+.electricBkgnd {
+}
+
+.psychicBkgnd {
+}
+
+.iceBkgnd {
+}
+
+.dragonBkgnd {
+}
+
+.darkBkgnd {
+}
+
+.fairyBkgnd {
+}
+
+.stellarBkgnd {
+}
+
+.unknownBkgnd {
 }
 
 #pokemonCard figure {
   position: absolute;
-  top: 0;
+  top: 25px;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 200px;
+  height: 250px;
 }
 
-#pokemonCard figure img {
-  width: 100%;
-  height: 100%;
+#pokemonCard h3 {
+  font-size: 20px;
+}
+
+#pokemonCard p {
+  font-size: 14px;
+  line-height: 1.1;
 }

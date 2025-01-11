@@ -8,7 +8,7 @@ export default function Home(): ReactElement {
   const menuCards = [
     {
       index: 0,
-      title: "Première génération",
+      title: "Pokémon première génération",
       bckgnd: bulbi,
       link: "/first_generation",
     },
@@ -18,14 +18,14 @@ export default function Home(): ReactElement {
     <main id={"home"}>
       {menuCards.map((card) => {
         return (
-          <div className={"linkCard"} key={card.index}>
-            <Link to={card.link} className={"cardContent"}>
+          <Link to={card.link} className={"linkCard"} key={card.index}>
+            <div className={"cardContent"}>
               <figure>
                 <img src={card.bckgnd} alt={"first generation"} />
                 <figcaption>{card.title}</figcaption>
               </figure>
-            </Link>
-          </div>
+            </div>
+          </Link>
         );
       })}
     </main>

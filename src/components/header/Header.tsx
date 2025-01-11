@@ -7,12 +7,13 @@ import { Link } from "react-router-dom";
 export default function Header(): ReactElement {
   return (
     <header id={"header"}>
-        <Link to={"/"}>
+        <Link to={"/"} title={'Accueil'}>
           <figure>
             <img src={pokedexImg} alt={"pokedex"} />
           </figure>
         </Link>
-      <h1>Bienvenue sur le Pokédex d'Ewenn !</h1>
+      <h1>Bienvenue sur le Pokédex Ewenn !</h1>
     </header>
   );
 }
+\

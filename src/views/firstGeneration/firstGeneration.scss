@@ -1,11 +1,20 @@
 #firstGeneration {
-  padding: 5em 2em;
+  padding: 2em;
+  background: #f2f2f2;
+  min-height: 90dvh;
+}
+
+#firstGeneration section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #firstGeneration h2 {
   font-size: 18px;
   text-align: center;
   position: relative;
+  margin-bottom: 2em;
 
   &::after {
     position: absolute;
@@ -16,4 +25,18 @@
     bottom: -10px;
     left: calc(50% - 50px);
   }
+}
+
+#firstGeneration .goBackIcn {
+  font-size: 2em;
+  cursor: pointer;
+}
+
+#firstGeneration .cardContainer {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2em;
+  width: 90%;
 }
