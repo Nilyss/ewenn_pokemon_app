@@ -1,5 +1,8 @@
 import { getRequest } from "../APICalls";
 
+import { IPokemon } from "../interfaces/pokemonInterface";
+import { pokemonModel } from "../models/pokemonModel";
+
 export class PokemonService {
   fetchPokemonInFrench = async (pokemonId: string) => {
     try {
@@ -16,13 +19,19 @@ export class PokemonService {
           (entry): boolean => entry.language.name === "fr",
         )?.flavor_text || "Description non trouvé";
 
-      const imageUrl =
-        pokemonRes.data.sprites.front_default || "Image non trouvé";
+      const spriteUrl =
+        pokemonRes.data.sprites.front_default || "Image non trouvée";
+
+      const artworkUrl =
+        pokemonRes.data.sprites.other["official-artwork"].front_default ||
+        "Artwork non trouvé";
 
       return {
+        id: parseInt(pokemonId),
         name: frenchName,
         description: frenchFlavorText,
-        image: imageUrl,
+        image: spriteUrl,
+        artwork: artworkUrl,
       };
     } catch (error) {
       console.error("Erreur lors de la récupération des données :", error);
@@ -41,21 +50,25 @@ export class PokemonService {
     }
   };
 
-  fetchAllPokemonsInFrench = async (limit: number) => {
+  fetchAllPokemonsInFrench = async (limit: number): Promise<IPokemon[]> => {
     try {
       const pokemons = await this.fetchAllPokemons(limit);
       return await Promise.all(
-        pokemons.map(async (pokemon) => {
-          const id = pokemon.url.split("/").filter(Boolean).pop();
-          return await this.fetchPokemonInFrench(id);
-        }),
+        pokemons.map(
+          async (pokemon: Array<object>): Promise<IPokemon | null> => {
+            const id: string = pokemon.url.split("/").filter(Boolean).pop();
+            const res: IPokemon | null = await this.fetchPokemonInFrench(id);
+            if (res !== null) {
+              return pokemonModel(res);
+            } else {
+              return null;
+            }
+          },
+        ),
       );
     } catch (error) {
-      console.error(
-        "Erreur lors de la rÃ©cupÃ©ration des PokÃ©mon :",
-        error,
-      );
-      return [];
+      console.error(`Error while fetching pokemons : ${error}`);
+      return [] as IPokemon[];
     }
   };
 }

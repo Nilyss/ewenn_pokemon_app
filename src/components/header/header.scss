@@ -1,0 +1,42 @@
+@use "../../utils/styles/variables" as vars;
+
+#header {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  max-height: 10dvh;
+  border-bottom: 1px solid black;
+  @media (max-width: vars.$mobileWidth) {
+    flex-flow: column nowrap;
+    padding: 2em;
+    max-height: 20dvh;
+  }
+}
+
+#header figure {
+  display: flex;
+  width: 90px;
+  margin-right: -90px;
+  margin-top: -10px;
+  @media (max-width: vars.$mobileWidth) {
+    width: 100px;
+    margin-right: unset;
+    margin-top: unset;
+  }
+}
+
+#header figure img {
+  transform: rotate(-20deg);
+}
+
+#header h1 {
+  text-align: center;
+  margin: 0 auto;
+  font-size: 2rem;
+  @media (max-width: vars.$mobileWidth) {
+    font-size: 18px;
+    margin-top: 10px;
+  }
+}

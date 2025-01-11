@@ -1,33 +1,32 @@
 import "./utils/styles/global.scss";
 
-import { useEffect } from "react";
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-
-import { PokemonService } from "./datas/services/getPokemon.service.ts";
-const pokemonService = new PokemonService();
-
+import { IPokemon } from "./datas/interfaces/pokemonInterface.ts";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Header from "./components/header/Header";
 
 import Home from "./views/home/Home";
+import FirstGeneration from "./views/firstGeneration/FirstGeneration";
+import PokemonDetails from "./views/pokemonDetails/PokemonDetails";
 
 function App() {
-  const tryServices = async (): Promise<void> => {
-    const res = await pokemonService.fetchAllPokemonsInFrench(151);
-    console.log('response =>', res);
-  };
-  useEffect(() => {
-    tryServices().finally();
-  });
+  const pokemon: IPokemon | null = null
 
-  return <>
-  <Router>
-    <Header />
-    <Routes>
-      <Route path="/" element={<Home />} />
-    </Routes>
-  </Router>
-  </>;
+  return (
+    <>
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/first_generation" element={<FirstGeneration />} />
+          <Route
+            path="details/:pokemonId"
+            element={<PokemonDetails pokemon={pokemon!} />}
+          />
+        </Routes>
+      </Router>
+    </>
+  );
 }
 
 export default App;

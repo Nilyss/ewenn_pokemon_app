@@ -1,0 +1,19 @@
+#firstGeneration {
+  padding: 5em 2em;
+}
+
+#firstGeneration h2 {
+  font-size: 18px;
+  text-align: center;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: "";
+    width: 100px;
+    height: 2px;
+    background-color: black;
+    bottom: -10px;
+    left: calc(50% - 50px);
+  }
+}

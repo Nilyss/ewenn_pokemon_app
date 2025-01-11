@@ -1,9 +1,10 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
+import { createRoot } from "react-dom/client";
+import App from "./App.tsx";
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+import { PokemonProvider } from "./datas/context/pokemons/PokemonProvider.tsx";
+
+createRoot(document.getElementById("root")!).render(
+  <PokemonProvider>
     <App />
-  </StrictMode>,
-)
+  </PokemonProvider>,
+);
