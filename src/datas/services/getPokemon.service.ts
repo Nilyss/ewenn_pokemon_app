@@ -2,6 +2,7 @@ import { getRequest } from "../APICalls";
 
 import { IPokemon } from "../interfaces/pokemonInterface";
 import { pokemonModel } from "../models/pokemonModel";
+import {convertTypesToFrench} from "../../utils/Utils.ts";
 
 export class PokemonService {
   fetchPokemonInFrench = async (pokemonId: string) => {
@@ -27,6 +28,7 @@ export class PokemonService {
         "Artwork non trouvé";
 
       const types = pokemonRes.data.types.map((type) => type.type.name) || [];
+      const typesFr = convertTypesToFrench(types);
 
       const stats = pokemonRes.data.stats.reduce((acc, stat) => {
         acc[stat.stat.name] = stat.base_stat;
@@ -56,7 +58,7 @@ export class PokemonService {
         description: frenchFlavorText,
         image: spriteUrl,
         artwork: artworkUrl,
-        types: types,
+        types: typesFr,
         stats: stats,
         abilities: abilities,
         moves: moves,

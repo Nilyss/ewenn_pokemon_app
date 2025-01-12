@@ -1,10 +1,10 @@
 #pokemonCard {
-  position: relative;
-  width: 205px;
-  height: 310px;
+  width: 225px;
+  height: 340px;
   box-shadow:
     rgba(60, 64, 67, 0.3) 0 1px 2px 0,
     rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
+  border: 4px solid #ffffff;
   border-radius: 4px;
   display: flex;
   flex-flow: column;
@@ -13,96 +13,154 @@
   text-align: center;
   padding: 1em;
   transition: all 50ms ease-out;
+  position: relative;
 
   &:hover {
-    cursor: pointer;
     transform: scale(1.11);
     transition: all 150ms ease-in;
   }
 }
 
-.typeBckgnd {
-  width: 205px;
-  height: 310px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-
-.normalBkgnd {
-}
-
-.fightingBkgnd {
-}
-
-.flyingBkgnd {
-}
-
-.poisonBkgnd {
-}
-.groundBkgnd {
-}
-
-.rockBkgnd {
-}
-
-.bugBkgnd {
-}
-
-.ghostBkgnd {
-}
-
-.steelBkgnd {
-}
-
-.fireBkgnd {
-}
-
-.waterBkgnd {
-}
-
-.grassBkgnd {
-  background: linear-gradient(135deg, #4caf50, #81c784, #a5d6a7);
-}
-
-.electricBkgnd {
-}
-
-.psychicBkgnd {
-}
-
-.iceBkgnd {
-}
-
-.dragonBkgnd {
-}
-
-.darkBkgnd {
-}
-
-.fairyBkgnd {
-}
-
-.stellarBkgnd {
-}
-
-.unknownBkgnd {
-}
-
 #pokemonCard figure {
-  position: absolute;
-  top: 25px;
-  left: 0;
   width: 200px;
-  height: 250px;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -2%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 180px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+  }
+
+  img {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 190px;
+    height: 190px;
+  }
+}
+
+#pokemonCard .cardContent {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#pokemonCard .pokemonID {
+  font-size: 14px;
+  line-height: 1.1;
+  background: rgba(61, 61, 61, 0.3);
+  border-radius: 4px;
+  padding: 0.3em;
+  width: fit-content;
+}
+
+#pokemonCard .types {
+  font-size: 12px;
+  font-style: italic;
+  margin-bottom: 1em;
 }
 
 #pokemonCard h3 {
   font-size: 20px;
 }
 
-#pokemonCard p {
+#pokemonCard .btnContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#pokemonCard .btnContainer button {
+  background: none;
+  border: none;
   font-size: 14px;
-  line-height: 1.1;
+}
+
+.NormalBkgnd {
+  background: linear-gradient(135deg, #a8a77a, #c5bda0, #e2dac0);
+}
+
+.CombatBkgnd {
+  background: linear-gradient(135deg, #c22e28, #e57373, #ff8a80);
+}
+
+.VolBkgnd {
+  background: linear-gradient(135deg, #a98ff3, #b39ddb, #d1c4e9);
+}
+
+.PoisonBkgnd {
+  background: linear-gradient(135deg, #a33ea1, #ba68c8, #e1bee7);
+}
+.SolBkgnd {
+  background: linear-gradient(135deg, #e2bf65, #d7ccc8, #bca88e);
+}
+
+.RocheBkgnd {
+  background: linear-gradient(135deg, #b6a136, #d7d2c3, #e0dcd5);
+}
+
+.InsecteBkgnd {
+  background: linear-gradient(135deg, #a6b91a, #dcedc8, #e6ee9c);
+}
+
+.SpectreBkgnd {
+  background: linear-gradient(135deg, #735797, #9575cd, #d1c4e9);
+}
+
+.AcierBkgnd {
+  background: linear-gradient(135deg, #b7b7ce, #e0e0e0, #eeeeee);
+}
+
+.FeuBkgnd {
+  background: linear-gradient(135deg, #ee8130, #ffab91, #ffccbc);
+}
+
+.EauBkgnd {
+  background: linear-gradient(135deg, #6390f0, #90caf9, #bbdefb);
+}
+
+.PlanteBkgnd {
+  background: linear-gradient(135deg, #4caf50, #81c784, #a5d6a7);
+}
+
+.ÉlectrikBkgnd {
+  background: linear-gradient(135deg, #f7d02c, #ffeb3b, #fff59d);
+}
+
+.PsyBkgnd {
+  background: linear-gradient(135deg, #f95587, #f48fb1, #f8bbd0);
+}
+
+.GlaceBkgnd {
+  background: linear-gradient(135deg, #96d9d6, #b2ebf2, #e0f7fa);
+}
+
+.DragonBkgnd {
+  background: linear-gradient(135deg, #6f35fc, #9575cd, #b39ddb);
+}
+
+.TénèbresBkgnd {
+  background: linear-gradient(135deg, #705746, #a1887f, #d7ccc8);
+}
+
+.FéeBkgnd {
+  background: linear-gradient(135deg, #d685ad, #f48fb1, #f8bbd0);
+}
+
+.StellaireBkgnd {
+  background: linear-gradient(135deg, #5a4fcf, #7e57c2, #b388ff);
+}
+
+.unknownBkgnd {
+  background: linear-gradient(135deg, #6c6c6c, #9e9e9e, #bdbdbd);
 }

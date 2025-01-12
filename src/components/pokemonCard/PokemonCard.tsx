@@ -3,26 +3,30 @@ import "./pokemonCard.scss";
 import { IPokemon } from "../../datas/interfaces/pokemonInterface";
 
 import { ReactElement } from "react";
-import { Link } from "react-router-dom";
 
 export default function PokemonCard({
   pokemon,
 }: Readonly<{
   pokemon: IPokemon;
 }>): ReactElement {
-  console.log("pokemonType: ", pokemon.types);
   return (
-    <Link to={`/details/id=${pokemon.id}`} id={"pokemonCard"}>
-      <div className={`typeBckgnd ${pokemon.types[0]}Bkgnd`}></div>
+    <article id={"pokemonCard"} className={`${pokemon.types[0]}Bkgnd`}>
       <figure>
         <img src={pokemon.artwork} alt={pokemon.name} />
       </figure>
-      <div className={"cardHeader"}>
-        <h3>{pokemon.name}</h3>
-      </div>
       <div className={"cardContent"}>
-        <p>{pokemon.description}</p>
+        <p className={"pokemonID"}>#{pokemon.id}</p>
+        <h3>{pokemon.name}</h3>
+        <p className={'types'}>
+          {pokemon.types.length > 1 ? "Types : " : "Type : "}{" "}
+          {pokemon.types.join(", ")}
+        </p>
+        <div className={"btnContainer"}>
+          <button className={"btn"}>Détails</button>
+          <button className={"btn"}>Stats</button>
+          <button className={"btn"}>Capacités</button>
+        </div>
       </div>
-    </Link>
+    </article>
   );
 }
