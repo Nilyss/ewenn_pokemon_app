@@ -10,8 +10,8 @@
   border-bottom: 1px solid black;
   @media (max-width: vars.$mobileWidth) {
     flex-flow: column nowrap;
-    padding: 2em;
-    max-height: 20dvh;
+    padding: 1em;
+    max-height: 30dvh;
   }
 }
 
