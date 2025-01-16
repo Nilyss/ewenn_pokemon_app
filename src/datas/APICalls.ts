@@ -6,7 +6,7 @@ import { isOnProduction } from "../utils/Utils";
 
 axios.defaults.headers.post["Content-Type"] = "application/json";
 axios.defaults.timeout = 10000;
-axios.defaults.withCredentials = !isOnProduction;
+axios.defaults.withCredentials = isOnProduction;
 axios.defaults.baseURL = isOnProduction
   ? "https://pokeapi.co/api/v2"
   : "https://pokeapi.co/api/v2";

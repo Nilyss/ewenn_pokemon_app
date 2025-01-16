@@ -10,25 +10,25 @@ export default function PokemonCard({
   pokemon: IPokemon;
 }>): ReactElement {
   const [isDetailsOpen, setIsDetailsOpen] = useState<boolean>(true);
+  const [isDescOpen, setIsDescOpen] = useState<boolean>(false);
   const [isStatsOpen, setIsStatsOpen] = useState<boolean>(false);
-  const [isCapaOpen, setIsCapaOpen] = useState<boolean>(false);
 
   const openDetails = (): void => {
     setIsDetailsOpen(true);
     setIsStatsOpen(false);
-    setIsCapaOpen(false);
+    setIsDescOpen(false);
+  };
+
+  const openDesc = (): void => {
+    setIsDetailsOpen(false);
+    setIsStatsOpen(false);
+    setIsDescOpen(true);
   };
 
   const openStats = (): void => {
     setIsDetailsOpen(false);
     setIsStatsOpen(true);
-    setIsCapaOpen(false);
-  };
-
-  const openCapa = (): void => {
-    setIsDetailsOpen(false);
-    setIsStatsOpen(false);
-    setIsCapaOpen(true);
+    setIsDescOpen(false);
   };
 
   const CardButtonContainer = (): ReactElement => {
@@ -37,11 +37,11 @@ export default function PokemonCard({
         <button onClick={openDetails} className={isDetailsOpen ? "active" : ""}>
           Détails
         </button>
+        <button onClick={openDesc} className={isDescOpen ? "active" : ""}>
+          Descri.
+        </button>
         <button onClick={openStats} className={isStatsOpen ? "active" : ""}>
           Stats
-        </button>
-        <button onClick={openCapa} className={isCapaOpen ? "active" : ""}>
-          Capacités
         </button>
       </div>
     );
@@ -50,7 +50,7 @@ export default function PokemonCard({
   const DetailsContent = (): ReactElement => {
     return (
       <>
-        <figure>
+        <figure className={"artworkContainer"}>
           <img
             src={pokemon.artwork}
             alt={pokemon.name}
@@ -70,41 +70,58 @@ export default function PokemonCard({
     );
   };
 
-  const StatsContent = (): ReactElement => {
+  const DescContent = (): ReactElement => {
     return (
       <>
-        <h3>Stats</h3>
-        <p>HP : {pokemon.stats.hp}</p>
-        <p>ATK : {pokemon.stats.attack}</p>
-        <p>DEF : {pokemon.stats.defense}</p>
-        <p>Sp.Atk : {pokemon.stats.specialAttack}</p>
-        <p>Sp.Def : {pokemon.stats.specialDefense}</p>
-        <p>Speed : {pokemon.stats.speed}</p>
+        <div className={"headerContent"}>
+          <h3>Description</h3>
+          <figure className={"spriteContainer"}>
+            <img
+              src={pokemon.image}
+              alt={`${pokemon.name} sprite`}
+              className={"pokemonSprite"}
+            />
+          </figure>
+        </div>
+        <div className={"bodyContent"}>
+          <p>{pokemon.description}</p>
+        </div>
         <CardButtonContainer />
       </>
     );
   };
 
-  const CapaContent = (): ReactElement => {
+  const StatsContent = (): ReactElement => {
     return (
       <>
-        <h3>Capacités</h3>
-        <p>Vol : {pokemon.stats.hp}</p>
-        <p>Poison : {pokemon.stats.attack}</p>
-        <p>Sol : {pokemon.stats.defense}</p>
-        <p>Roche : {pokemon.stats.specialAttack}</p>
-        <p>Insecte : {pokemon.stats.specialDefense}</p>
-        <p>Spectre : {pokemon.stats.speed}</p>
+        <div className={"headerContent"}>
+          <h3>Stats</h3>
+          <figure className={"spriteContainer"}>
+            <img
+              src={pokemon.image}
+              alt={`${pokemon.name} sprite`}
+              className={"pokemonSprite"}
+            />
+          </figure>
+        </div>
+        <div className={"bodyContent"}>
+          <p>PV : {pokemon.stats.hp}</p>
+          <p>ATK : {pokemon.stats.attack}</p>
+          <p>DEF : {pokemon.stats.defense}</p>
+          <p>VITESSE : {pokemon.stats.speed}</p>
+        </div>
         <CardButtonContainer />
       </>
     );
   };
+
+  console.log("moves =>", pokemon.moves);
 
   return (
     <article id={"pokemonCard"} className={`${pokemon.types[0]}Bkgnd`}>
       {isDetailsOpen && <DetailsContent />}
+      {isDescOpen && <DescContent />}
       {isStatsOpen && <StatsContent />}
-      {isCapaOpen && <CapaContent />}
     </article>
   );
 }
