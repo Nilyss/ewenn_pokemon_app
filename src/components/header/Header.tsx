@@ -12,7 +12,7 @@ export default function Header(): ReactElement {
             <img src={pokedexImg} alt={"pokedex"} />
           </figure>
         </Link>
-      <h1>Bienvenue sur le Pokédex, Ewenn !</h1>
+      <h1>Bienvenue sur le Pokédex, Zoé !</h1>
     </header>
   );
 }
